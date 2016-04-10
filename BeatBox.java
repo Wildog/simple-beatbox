@@ -72,10 +72,14 @@ import java.sql.ResultSet;
 /** 
  * BeatBox 
  * A Simple Drum Machine
- * @author Wildog (in@limbo.space)
+ * @author Wildog (i@wil.dog)
  * @version 1.0
  */
 public class BeatBox {
+    // mysql server server
+    String server = "jdbc:mysql://localhost:3306/beatbox?"
+        + "user=root&password=753951&useUnicode=true&characterEncoding=UTF8";
+
     // data containers
     ArrayList<JToggleButton> toggleButtonList;
     ArrayList<JButton> loginButtonList;
@@ -446,11 +450,9 @@ public class BeatBox {
      * Connect MySQL server 
      */
     public void connectDatabase() {
-        String url = "jdbc:mysql://localhost:3306/beatbox?"
-            + "user=root&password=753951&useUnicode=true&characterEncoding=UTF8";
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(url);
+            conn = DriverManager.getConnection(server);
             conn.setAutoCommit(false);
         } catch (Exception e) {
             e.printStackTrace();
